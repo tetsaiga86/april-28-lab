@@ -2,6 +2,9 @@ function assert(expression, failureMessage) {
   if (!expression) {
     console.log('assertion failure: ', failureMessage);
   }
+  else{
+    console.log('you\'re right mothafucka');
+  }
 }
 
 function Blob (name){
@@ -24,8 +27,25 @@ console.log('Length of time to consume Downington = ' + blob.hoursSpentInDowingt
 
 var hoursSpentInDowington = blob.hoursSpentInDowington;
 
-// var town = {
-//
-// };
-//
-// function hoursToOoze(population, peoplePerHour){};
+Blob.prototype.hoursToOoze = function(population, peoplePerHour) {
+  var hours = 0;
+  while(population > 0) {
+    population -= peoplePerHour;
+    peoplePerHour++;
+    hours++;
+  }
+  return hours;
+};
+assert(blob.hoursToOoze(0, 1) === 0, 'no people means no time needed.');
+assert(blob.hoursToOoze(1000, 1) === hoursSpentInDowington,
+  'hoursSpentInDowington should match hoursToOoze\'s result for 1000');
+
+//My assertions:
+assert(blob.hoursToOoze(1, 1) === 1,
+  'number 1 is wrong');
+
+assert(blob.hoursToOoze(500, 5000000) === 1,
+  'number 2 is wrong');
+
+assert(blob.hoursToOoze(1000000, 100) === 1319,
+  'number 3 is wrong');
