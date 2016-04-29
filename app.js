@@ -49,3 +49,35 @@ assert(blob.hoursToOoze(500, 5000000) === 1,
 
 assert(blob.hoursToOoze(1000000, 100) === 1319,
   'number 3 is wrong');
+
+// Problem 3:
+var array = ['this', 'assignment', 'if', 'fun'];
+function lastLetterSort(stringArray) {
+  function byLastLetter(a, b) {
+    return a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1);
+  }
+
+  return stringArray.sort(byLastLetter);
+}
+assert(JSON.stringify(lastLetterSort(array)) === JSON.stringify(['if', 'fun', 'this', 'assignment']), 'number 4 is wrong');
+var num = [1,2,3,4];
+
+function sumArray(numberArray) {
+  var sum = 0;
+  numberArray.forEach(function(element) {
+    return(sum += element);
+  });
+  return sum;
+}
+
+sumArray(num);
+
+var nums = [[11,2],[3,4],[0,6]];
+
+function sumSort(arrayOfArrays) {
+  return arrayOfArrays.sort(function(a,b) {
+    return sumArray(a) - sumArray(b);
+  });
+}
+
+assert(JSON.stringify(sumSort(nums)) === JSON.stringify([[0,6],[3,4],[11,2]]), 'number 6 is wrong');
